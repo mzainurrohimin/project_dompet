@@ -26,8 +26,11 @@ class HargaRequest extends FormRequest
         return [
             'harga_normal' => 'required|max:255',
             'harga_diskon' => 'required|max:255',
-            'diskon' => 'required|integer',
-            'potongan_ongkir' => 'required|max:255'
+            'diskon' => 'required|required|max:255',
+            'potongan_ongkir' => 'required|max:255',
+            'pesan_sekarang' => 'required',
+            'pesan_tf' => 'required',
+            'pesan_cod' => 'required'
 
         ];
     }

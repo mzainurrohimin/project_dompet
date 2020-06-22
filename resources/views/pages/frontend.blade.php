@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('title', 'Halaman Utama')
 
@@ -94,8 +94,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 justify-content-center d-flex">
                     @foreach ($keunggulan as $item)
-                    <div
-                        class="best animate__animated animate__infinite animate__slower animate__fadeInUp pt-4 text-center">
+                    <div class="best animate__animated animate__infinite animate__slower animate__fadeInUp pt-4 text-center">
                         <h1>{{ $item->title }}</h1>
                     </div>
                 </div>
@@ -193,12 +192,12 @@
             </div>
         </div>
         @endforeach
-        @foreach ($promo as $item)
+        {{-- @foreach ($promo as $item) --}}
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center">
                     <p style="font-size: 25px; font-weight: bold;">Khusus 20 Pembeli Pertama Hari Ini,<br>
-                    Kami Ada <span style="color: red;">Tambahan Promo Gratis {{ $item->nama_promo }}</span></p>
+                    Kami Ada <span style="color: red;">Tambahan Promo Gratis {{ $promo->nama_promo }}</span></p>
                     <p style="color: red;">GRATIS HANYA UNTUK ANDA !!</p>
                 </div>
             </div>
@@ -206,11 +205,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <img src="{{ Storage::url($item->gambar) }}" class="img-fluid" width="500px" alt="">
+                    <img src="{{ Storage::url($promo->gambar) }}" class="img-fluid" width="500px" alt="">
                 </div>
             </div>
         </div>
-        @endforeach
+        {{-- @endforeach --}}
         <div class="harga-dompet">
             <div class="container mt-5 text-center">
                 <div class="row justify-content-center">
@@ -253,16 +252,16 @@
                 </div>
             </div>
         </div>
-        @foreach ($promo as $item)
+        {{-- @foreach ($promo as $item) --}}
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center">
                     <h1 style="font-weight: bold;">Perhatian !!</h1>
                     <p style="font-size: xx-large;">Stock hari ini tersisa hanya</p>
-                    <span style="color: red; font-weight: bold; font-size: 25px;"><i>{{ $item->stock_promo }} Pcs</i></span>
+                    <span style="color: red; font-weight: bold; font-size: 25px;"><i>{{ $promo->stock_promo }} Pcs</i></span>
                     <div class="progress mt-2">
                         <div class="progress-bar animate__animated animate__infinite animate__slower animate__slideInLeft"
-                            role="progressbar" style="width: {{ $item->stock_promo }}%" aria-valuenow="80" aria-valuemin="0"
+                            role="progressbar" style="width: {{ $promo->stock_promo }}%" aria-valuenow="80" aria-valuemin="0"
                             aria-valuemax="100"></div>
                     </div>
                 </div>
@@ -280,14 +279,16 @@
         </div>
         <div class="container mt-5">
             <div class="row justify-content-center">
-                <div class="col-md-12 justify-content-center">
-                <div class="col-md-6 justify-content-center">
-                    <div class="example" style="text-align: center;" data-date="{{ $item->waktu_promo }}"></div>
+                <div class="col-md-6 justify-content-center d-flex">
+                <div class="waktu">
+                    <p style="font-weight: bold; font-size: 25px;" id="demo"></p>
+                
+                    {{-- <div class="example" style="text-align: center;" data-date="{{ $item->waktu_promo }}"></div> --}}
                 </div>
                 </div>
             </div>
         </div>
-        @endforeach
+        {{-- @endforeach --}}
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6 justify-content-center d-flex">
@@ -304,10 +305,11 @@
                     <div class="promo animate__animated animate__infinite animate__slower animate__shakeY">
                         <i class="fa fa-hand-o-down" aria-hidden="true"></i>
                     </div>
-                </div>
+                </div>@foreach ($harga as $item)
                 <div class="customer mt-3 text-center">
-                    <a href="" style="text-decoration: none;"><h3>PESAN SEKARANG</h3></a>
+                    <a href="{{ $item->pesan_sekarang }}"><h3>PESAN SEKARANG</h3></a>
                 </div>
+                @endforeach
             </div>
         </div>
         
@@ -317,25 +319,15 @@
                 <div class="col-md-4 text-center">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            
-                            @foreach ($testimoni as $item)                  
-                            <div class="carousel-item active">
+                            @foreach ($testimoni as $baris => $item)                  
+                            <div class="carousel-item {{ ($baris == 0) ? 'active' : '' }}">
                                 <img src="{{ Storage::url($item->testimoni) }}" height="500px" width="200px" class="d-block w-100" alt="...">
                             </div>
-                            @endforeach
                             
+                            @endforeach
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                            data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                            data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
+                        
+                      </div>
                 </div>
             </div>
         </div>
@@ -366,10 +358,10 @@
                     </div>
                     @foreach ($harga as $item)         
                     <div class="diskon text-center mt-1">
-                        <h2 style="color: white;">DISKON {{ $item->diskon }}%...!!!</h2>
-                        <p>HARGA NORMAL <span style="text-decoration: line-through; color: red;">Rp. {{ $item->harga_normal }}</span> /
+                        <h2 style="color: white;">{{ $item->diskon }}</h2>
+                        <p>HARGA NORMAL <span style="text-decoration: line-through; color: red;">{{ $item->harga_normal }}</span> /
                             Pcs</p>
-                        <span style="font-weight: bold; color: #ffff00;">Harga Spesial Setelah DISKON Hanya...</span>
+                        <span style="font-weight: bold; color: #ffff00;">Harga Promo Spesial Hanya...</span>
                         <br>
                         <span style="color: white; font-weight: bold; font-size: 35px;">Rp. {{ $item->harga_diskon}} / Pcs</span>
                     </div>
@@ -394,7 +386,7 @@
     <div class="button-trf">
         <div class="sticky">
             <button class="btn-trf">
-                <a href="#" style="font-size: 12px; font-weight: bold;"><i class="fa fa-whatsapp" style="font-size: 12px; color: white;"> BAYAR DITEMPAT (COD)</i><br>
+                <a href="{{ $item->pesan_cod }}" style="font-size: 12px; font-weight: bold;"><i class="fa fa-whatsapp" style="font-size: 12px; color: white;"> BAYAR DITEMPAT (COD)</i><br>
                 <del>+ POTONGAN ONGKIR Rp. {{ $item->potongan_ongkir }}</del></a>
             </button>
         </div>
@@ -402,7 +394,7 @@
     <div class="button-cod">
         <div class="sticky text-right">
             <button class="btn-cod">
-                <a href="#" style="font-size: 12px; font-weight: bold;"><i class="fa fa-whatsapp" style="font-size: 12px; color: white;"> TRANSFER BANK</i><br>
+                <a href="{{ $item->pesan_tf }}" style="font-size: 12px; font-weight: bold;"><i class="fa fa-whatsapp" style="font-size: 12px; color: white;"> TRANSFER BANK</i><br>
                 + POTONGAN ONGKIR Rp. {{ $item->potongan_ongkir }}</a>
             </button>
         </div>

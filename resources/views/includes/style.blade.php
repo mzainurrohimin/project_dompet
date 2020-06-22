@@ -10,7 +10,6 @@
 <!-- animate css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
 
-{{-- link css --}}
 <link rel="stylesheet" href="dompet_project/css/style.css">
 
-<link rel="stylesheet" href="dompet_project/css/TimeCircles.css">
+{{-- link css --}}

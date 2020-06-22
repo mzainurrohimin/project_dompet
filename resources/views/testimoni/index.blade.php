@@ -7,7 +7,7 @@
             Testimoni
         </div>
         <div class="card-body">
-            <a href="{{ route('testimoni.create') }}" class="btn btn-primary">Input Testimoni</a>
+            {{-- <a href="{{ route('testimoni.create') }}" class="btn btn-primary">Input Testimoni</a> --}}
                     <br/>
                     <br/>
                     <table class="table table-bordered table-hover table-striped">
@@ -28,13 +28,13 @@
                                 {{-- <td>{{ $l->logo }}</td> --}}
                                 <td>
                                     <a href="{{ route('testimoni.edit', $item->id) }}" class="btn btn-warning"><i class="fa fa-pencil-alt"></i></a>
-                                    <form class="d-inline" action="{{ route('testimoni.destroy', $item->id) }}" method="post">
+                                    {{-- <form class="d-inline" action="{{ route('testimoni.destroy', $item->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                             @endforeach

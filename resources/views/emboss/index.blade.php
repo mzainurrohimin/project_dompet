@@ -7,7 +7,7 @@
             Logo Emboss
         </div>
         <div class="card-body">
-            <a href="{{ route('emboss.create') }}" class="btn btn-primary">Input Logo Emboss</a>
+            {{-- <a href="{{ route('emboss.create') }}" class="btn btn-primary">Input Logo Emboss</a> --}}
                     <br/>
                     <br/>
                     <table class="table table-bordered table-hover table-striped">
@@ -29,13 +29,13 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('emboss.edit', $item->id) }}" class="btn btn-warning"><i class="fa fa-pencil-alt"></i></a>
-                                    <form class="d-inline" action="{{ route('emboss.destroy', $item->id) }}" method="post">
+                                    {{-- <form class="d-inline" action="{{ route('emboss.destroy', $item->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                             @endforeach

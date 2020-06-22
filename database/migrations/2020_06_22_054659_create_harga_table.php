@@ -17,8 +17,11 @@ class CreateHargaTable extends Migration
             $table->bigIncrements('id');
             $table->string('harga_normal');
             $table->string('harga_diskon');
-            $table->integer('diskon');
+            $table->string('diskon');
             $table->string('potongan_ongkir');
+            $table->longText('pesan_sekarang');
+            $table->longText('pesan_tf');
+            $table->longText('pesan_cod');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -17,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', 'HomeController@index')->name('home');
+Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/', 'FrontEndController@index')->name('frontend');
+
 Route::resource('logo', 'LogoController');
 Route::resource('eksklusif', 'EksklusifController');
 Route::resource('warnadompet', 'WarnaDompetController');

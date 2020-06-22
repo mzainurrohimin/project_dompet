@@ -33,6 +33,21 @@
                             <input type="text" name="potongan_ongkir" value="{{ old('potongan_ongkir') }}" class="form-control @error('potongan_ongkir') is-invalid @enderror"/>
                             @error('potongan_ongkir') <div class="text-muted">{{ $message }}</div> @enderror
                         </div>
+                        <div class="from-group">
+                            <label for="pesan_sekarang" class="form-control-label">Link Pesan Sekarang</label>
+                            <input type="text" name="pesan_sekarang" value="{{ old('pesan_sekarang') }}" class="form-control @error('pesan_sekarang') is-invalid @enderror"/>
+                            @error('pesan_sekarang') <div class="text-muted">{{ $message }}</div> @enderror
+                        </div>
+                        <div class="from-group">
+                            <label for="pesan_tf" class="form-control-label">Link Pesan Transfer</label>
+                            <input type="text" name="pesan_tf" value="{{ old('pesan_tf') }}" class="form-control @error('pesan_tf') is-invalid @enderror"/>
+                            @error('pesan_tf') <div class="text-muted">{{ $message }}</div> @enderror
+                        </div>
+                        <div class="from-group">
+                            <label for="pesan_cod" class="form-control-label">Link Pesan COD</label>
+                            <input type="text" name="pesan_cod" value="{{ old('pesan_cod') }}" class="form-control @error('pesan_cod') is-invalid @enderror"/>
+                            @error('pesan_cod') <div class="text-muted">{{ $message }}</div> @enderror
+                        </div>
                         
                         <div class="form-group mt-3">
                             <input type="submit" class="btn btn-success" value="Simpan">
